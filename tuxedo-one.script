@@ -36,18 +36,18 @@
 # Set the text colour in (rgb / 256)
 text_colour.red = 1.0;
 text_colour.green = 1.0;
-text_colour.blue = 1.0;
+text_colour.blue = 0.93;
 
 # Tinted text #988592
 # For mate, use #dedbd2
-tinted_text_colour.red = 0.87;
-tinted_text_colour.green = 0.86;
-tinted_text_colour.blue = 0.82;
+tinted_text_colour.red = 0.815;
+tinted_text_colour.green = 0.698;
+tinted_text_colour.blue = 0.325;
 
 # Action Text - #ffffff - RGB 255 255 255
 action_text_colour.red = 1.0;
 action_text_colour.green = 1.0;
-action_text_colour.blue = 1.0;
+action_text_colour.blue = 0.93;
 
 # Orange - #ff4012 - RGB 255 64 18
 debugsprite = Sprite();
@@ -176,8 +176,8 @@ fun StringToInteger (str) {
 #
 # Color for TUXEDO
 # #212121 -->  0.129, 0.129, 0.129
-Window.SetBackgroundTopColor (0.129, 0.129, 0.129);     # Nice colour on top of the screen fading to
-Window.SetBackgroundBottomColor (0.129, 0.129, 0.129);  # an equally nice colour on the bottom
+Window.SetBackgroundTopColor (0.125, 0.125, 0.125);     # Nice colour on top of the screen fading to
+Window.SetBackgroundBottomColor (0.125, 0.125, 0.125);  # an equally nice colour on the bottom
 
 bits_per_pixel = Window.GetBitsPerPixel ();
 if (bits_per_pixel == 4) {
@@ -199,8 +199,10 @@ logo.sprite = Sprite ();
 logo.sprite.SetImage (logo.image);
 logo.width = logo.image.GetWidth ();
 logo.height = logo.image.GetHeight ();
-logo.x = Window.GetX () + Window.GetWidth () / 2 - logo.width  / 2;
-logo.y = Window.GetY () + Window.GetHeight () / 2 - logo.height / 1.3;
+#logo.x = Window.GetX () + Window.GetWidth () / 2 - logo.width  / 2;
+logo.x =  Window.GetWidth () / 2 - logo.width  / 2;
+#logo.y = Window.GetY () + Window.GetHeight () / 2 - logo.height / 1.3;
+logo.y = Window.GetHeight () / 2 - logo.height / 1.3;
 logo.z = 1000;
 logo.sprite.SetX (logo.x);
 logo.sprite.SetY (logo.y);
@@ -224,7 +226,7 @@ progress_indicator.bullet_hspacing = progress_indicator.bullet_width * 1.1;
 progress_indicator.width = progress_indicator.bullet_width * 5;
 progress_indicator.height = progress_indicator.bullet_height;
 progress_indicator.y = logo.y + logo.height + (logo.height / 10);
-progress_indicator.x = Window.GetX () + Window.GetWidth () / 2 - progress_indicator.width / 2; # logo.x + 26;
+progress_indicator.x = Window.GetWidth () / 2 - progress_indicator.width / 2; # logo.x + 26;
 
 # use a fixed string with ascending and descending stems to calibrate the
 # bounding box for the first message, so the messages below don't move up
@@ -393,7 +395,7 @@ fun get_message_label (label, is_fake, is_action_line) {
     message_label.height = message_image.GetHeight ();
 
     # Center the line horizontally
-    message_label.x = Window.GetX () + Window.GetWidth () / 2 - message_label.width / 2;
+    message_label.x = Window.GetWidth () / 2 - message_label.width / 2;
 
     message_label.y = top_of_the_text;
 
@@ -428,7 +430,7 @@ fun get_fsck_label (label, is_fake) {
     fsck_label.height = fsck_label.image.GetHeight ();
     
     # Centre the label horizontally
-    fsck_label.x = Window.GetX () + Window.GetWidth () / 2 - fsck_label.width / 2;
+    fsck_label.x = Window.GetWidth () / 2 - fsck_label.width / 2;
     
     local.first_label = get_message_label (label, 1, 0);
     
@@ -545,7 +547,7 @@ fun password_dialogue_setup (message_label) {
     entry.sprite.SetImage (entry.image);
     
     # Centre the box horizontally
-    entry.x = Window.GetX () + Window.GetWidth () / 2 - entry.image.GetWidth () / 2;
+    entry.x = Window.GetWidth () / 2 - entry.image.GetWidth () / 2;
 
     # Put the entry below the second label.
     entry.y = message_notification[2].y + label.height;
@@ -593,7 +595,7 @@ fun display_password_callback (prompt, bullets) {
     spaces = Math.Int( (password_dialogue.entry.image.GetWidth () - (margin * 2) ) / ( 2 * bullet_width / 3 ) );
     #Debug ("spaces = " + spaces + ", bullets = " + bullets);
     bullets_area.width = margin + spaces * ( 2 * bullet_width / 3);
-    bullets_area.x = Window.GetX () + Window.GetWidth () / 2 - bullets_area.width / 2;
+    bullets_area.x = Window.GetWidth () / 2 - bullets_area.width / 2;
     #DebugBottom ("pwd_entry x = " + password_dialogue.entry.x + ", bullets_area.x = " + bullets_area.x + ", bullets_area.width = " + bullets_area.width);
     if (bullets > spaces)
         bullets = spaces;
@@ -1064,7 +1066,7 @@ fun question_dialogue_setup (message_label, text_image) {
     field.sprite.SetImage (field.image);
     
     # Centre the box horizontally
-    field.x = Window.GetX () + Window.GetWidth () / 2 - field.image.GetWidth () / 2;    
+    field.x = Window.GetWidth () / 2 - field.image.GetWidth () / 2;    
     content_x = field.x + margin;
 
     # Put the field below the second label.
